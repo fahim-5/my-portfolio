@@ -1,16 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { FaLinkedinIn, FaGithub, FaTwitter, FaInstagram } from 'react-icons/fa';
 import styles from './Footer.module.css';
 
 const Footer = () => {
-  const socialLinks = {
-    linkedin: 'https://www.linkedin.com/in/fahim-faysal/',
-    github: 'https://github.com/fahim-5',
-    twitter: 'https://twitter.com/fahimfaysal',
-    instagram: 'https://www.instagram.com/fahimfaysal/'
-  };
+  const [isVisible, setIsVisible] = useState(false);
+  const [hoveredIcon, setHoveredIcon] = useState(null);
+
+  const socialLinks = [
+    {
+      name: 'linkedin',
+      url: 'https://www.linkedin.com/in/fahim-faysal/',
+      icon: <FaLinkedinIn />,
+      color: '#0077b5'
+    },
+    {
+      name: 'github',
+      url: 'https://github.com/fahim-5',
+      icon: <FaGithub />,
+      color: '#333'
+    },
+    {
+      name: 'twitter',
+      url: 'https://twitter.com/fahimfaysal',
+      icon: <FaTwitter />,
+      color: '#1da1f2'
+    },
+    {
+      name: 'instagram',
+      url: 'https://www.instagram.com/fahimfaysal/',
+      icon: <FaInstagram />,
+      color: '#e4405f'
+    }
+  ];
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} ${isVisible ? styles.visible : ''}`}>
       <div className={styles.container}>
         <div className={styles.footerContent}>
           <div className={styles.footerText}>
@@ -20,18 +48,27 @@ const Footer = () => {
           </div>
           
           <div className={styles.footerSocial}>
-            <a href={socialLinks.linkedin} className={styles.socialIcon} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <i className="fab fa-linkedin-in"></i>
-            </a>
-            <a href={socialLinks.github} className={styles.socialIcon} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <i className="fab fa-github"></i>
-            </a>
-            <a href={socialLinks.twitter} className={styles.socialIcon} target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href={socialLinks.instagram} className={styles.socialIcon} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <i className="fab fa-instagram"></i>
-            </a>
+            {socialLinks.map((social, index) => (
+              <a
+                key={social.name}
+                href={social.url}
+                className={`${styles.socialIcon} ${hoveredIcon === social.name ? styles.hovered : ''}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.name}
+                style={{ animationDelay: `${index * 0.1}s` }}
+                onMouseEnter={() => setHoveredIcon(social.name)}
+                onMouseLeave={() => setHoveredIcon(null)}
+              >
+                <span className={styles.socialIconInner}>
+                  {social.icon}
+                </span>
+                <span 
+                  className={styles.iconBackground} 
+                  style={{ backgroundColor: social.color }}
+                ></span>
+              </a>
+            ))}
           </div>
         </div>
       </div>

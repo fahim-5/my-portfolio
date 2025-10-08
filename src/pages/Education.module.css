@@ -169,4 +169,12 @@
   .eduItem h3 {
     font-size: 20px;
   }
+
+  
+.education {
+  /* Match the dark background */
+  padding: 90px 0;
+  
+}
+
 }

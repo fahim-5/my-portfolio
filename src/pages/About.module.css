@@ -203,4 +203,11 @@
   .socialIcon i {
     font-size: 16px;
   }
+
+  .about {
+  /* Very dark background matching the image */
+  
+  padding: 92px 0;
+  
+}
 }

@@ -1,14 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './Hero.module.css';
-// Import the data from the new JSON file
 import heroData from '../database/heroData.json';
+import profileImage from '../assets/Home.jpg';
+// Assuming the filename in 'src/assets' is correct (Fahim Faysal.pdf)
+import cvFile from '../assets/Fahim Faysal.pdf';
 
-// Note: profileImage import is kept for the onError fallback, 
-// but the main image source is now read from heroData.
-import profileImage from '../assets/Home.jpg'; 
+import {
+  FaEnvelope,
+  FaPhoneAlt,
+  FaMapMarkerAlt,
+  FaLinkedinIn,
+  FaGithub,
+  FaTwitter,
+  FaInstagram,
+  FaCopy, // Added Copy Icon
+} from 'react-icons/fa';
+
+// A separate, clean component for the copy button logic
+const CopyButton = ({ value, label, onCopy, copiedField }) => {
+  const isCopied = copiedField === label;
+
+  return (
+    <button className={styles.copyButton} onClick={() => onCopy(value, label)} aria-label={`Copy ${label}`}>
+      <FaCopy className={styles.copyIcon} />
+      {isCopied && <span className={styles.copyConfirmation}>Copied!</span>}
+    </button>
+  );
+};
 
 const Hero = () => {
-  // Destructure data for cleaner JSX
   const {
     greeting,
     name,
@@ -18,23 +38,37 @@ const Hero = () => {
     stats,
     buttonText,
     cvButtonText,
-    cvLink,
+    cvLink: cvLinkFromData,
     profileImageUrl,
-    personalInfo
+    personalInfo,
   } = heroData;
 
   const [showContactModal, setShowContactModal] = useState(false);
+  // State to track which field was just copied (e.g., 'email', 'phone')
+  const [copiedField, setCopiedField] = useState(null); 
+  const modalRef = useRef(null);
 
-  // Modal close on click outside logic
+  // Function to handle the copy action
+  const handleCopy = async (textToCopy, fieldLabel) => {
+    try {
+      await navigator.clipboard.writeText(textToCopy);
+      setCopiedField(fieldLabel); // Set the field that was copied
+      // Clear the 'Copied!' message after 2 seconds
+      setTimeout(() => setCopiedField(null), 2000);
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+      // Optional: Add user feedback for failure
+    }
+  };
+
+  // Close modal when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      const modal = document.querySelector(`.${styles.contactModal}`);
-      // Check if modal exists, if the click is outside, and if the modal is open
-      if (modal && !modal.contains(event.target) && showContactModal) {
+    const handleClickOutside = (e) => {
+      if (modalRef.current && !modalRef.current.contains(e.target)) {
         setShowContactModal(false);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
+    if (showContactModal) document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [showContactModal]);
 
@@ -42,13 +76,23 @@ const Hero = () => {
     <section id="home" className={styles.hero}>
       <div className={styles.container}>
         <div className={styles.heroContent}>
+          {/* Image */}
+          <div className={styles.heroImage}>
+            <img
+              src={profileImageUrl || profileImage}
+              alt={`${name} ${lastName}`}
+              onError={(e) => (e.target.src = profileImage)}
+            />
+            <div className={styles.caption}>{jobTitle}</div>
+          </div>
+
+          {/* Text Content */}
           <div className={styles.intro}>
-            {/* Added structure for the '— Hello, I'm' look */}
             <div className={styles.greetingLine}>
-                <span className={styles.greetingDash}>—</span>
-                <h2>{greeting}</h2>
+              <span className={styles.greetingDash}>—</span>
+              <h2>{greeting}</h2>
             </div>
-            
+
             <h1>
               <span className={styles.whiteName}>{name}</span>{' '}
               <span className={styles.gradientText}>{lastName}</span>
@@ -56,12 +100,8 @@ const Hero = () => {
             <p>{description}</p>
 
             <div className={styles.stats}>
-              {stats.map((stat, index) => (
-                <div
-                  key={index}
-                  // Keep glassCard class for shared styling
-                  className={`${styles.statItem} ${styles.glassCard}`} 
-                >
+              {stats.map((stat, i) => (
+                <div key={i} className={`${styles.statItem} ${styles.glassCard}`}>
                   <h3>{stat.value}</h3>
                   <p>{stat.label}</p>
                 </div>
@@ -69,93 +109,77 @@ const Hero = () => {
             </div>
 
             <div className={styles.buttons}>
-              {/* Note: The image shows 'View my CV' as the primary button and 'Get In Touch' as the secondary */}
-              <a href={cvLink} download className={styles.btnLink1}>
+              <a href={cvFile} download>
                 <button className={styles.btn1}>{cvButtonText}</button>
               </a>
-              <button
-                className={styles.btn2}
-                onClick={() => setShowContactModal(true)}
-              >
+              <button className={styles.btn2} onClick={() => setShowContactModal(true)}>
                 {buttonText}
               </button>
             </div>
           </div>
-
-          <div className={styles.heroImage}>
-            {/* Image styling updated to match the trapezoid-like shape and dark border */}
-            <img
-              src={profileImageUrl}
-              alt={`${name} ${lastName}`}
-              onError={(e) => {
-                console.log('Hero image failed to load, using default');
-                e.target.src = profileImage;
-              }}
-            />
-            <div className={styles.caption}>{jobTitle}</div>
-          </div>
         </div>
       </div>
 
+      {/* Contact Modal */}
       {showContactModal && (
         <div className={styles.modalOverlay}>
-          <div className={styles.contactModal}>
-            <button
-              className={styles.closeButton}
-              onClick={() => setShowContactModal(false)}
-            >
+          <div className={styles.contactModal} ref={modalRef}>
+            <button className={styles.closeButton} onClick={() => setShowContactModal(false)}>
               ×
             </button>
-            <h2>{buttonText}</h2>
-            <div className={styles.contactInfo}>
+            <h2>Get in Touch</h2>
+
+            <div className={styles.contactDetails}>
+              {/* Email Item with Copy Button */}
               <div className={styles.contactItem}>
-                <i className="fas fa-envelope"></i>
+                <FaEnvelope className={styles.contactIcon} />
                 <p>{personalInfo.email}</p>
+                <CopyButton 
+                  value={personalInfo.email} 
+                  label="email" 
+                  onCopy={handleCopy} 
+                  copiedField={copiedField} 
+                />
               </div>
+
+              {/* Phone Item with Copy Button */}
               <div className={styles.contactItem}>
-                <i className="fas fa-phone"></i>
+                <FaPhoneAlt className={styles.contactIcon} />
                 <p>{personalInfo.phone}</p>
+                <CopyButton 
+                  value={personalInfo.phone} 
+                  label="phone" 
+                  onCopy={handleCopy} 
+                  copiedField={copiedField} 
+                />
               </div>
+
+              {/* Location Item (no copy button) */}
               <div className={styles.contactItem}>
-                <i className="fas fa-map-marker-alt"></i>
+                <FaMapMarkerAlt className={styles.contactIcon} />
                 <p>{personalInfo.location}</p>
               </div>
             </div>
+
             <div className={styles.socialLinks}>
-              <a
-                href={personalInfo.socialLinks?.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-linkedin-in"></i>
+              <a href={personalInfo.socialLinks?.linkedin} target="_blank" rel="noreferrer">
+                <FaLinkedinIn />
               </a>
-              <a
-                href={personalInfo.socialLinks?.github}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-github"></i>
+              <a href={personalInfo.socialLinks?.github} target="_blank" rel="noreferrer">
+                <FaGithub />
               </a>
-              <a
-                href={personalInfo.socialLinks?.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-twitter"></i>
+              <a href={personalInfo.socialLinks?.twitter} target="_blank" rel="noreferrer">
+                <FaTwitter />
               </a>
-              <a
-                href={personalInfo.socialLinks?.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i className="fab fa-instagram"></i>
+              <a href={personalInfo.socialLinks?.instagram} target="_blank" rel="noreferrer">
+                <FaInstagram />
               </a>
             </div>
           </div>
         </div>
       )}
 
-      {/* Floating background elements remain for ambient effect */}
+      {/* Floating visuals */}
       <div className={`${styles.floatingElement} ${styles.float1}`}></div>
       <div className={`${styles.floatingElement} ${styles.float2}`}></div>
       <div className={`${styles.floatingElement} ${styles.float3}`}></div>

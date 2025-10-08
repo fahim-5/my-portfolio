@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Header.module.css';
 
 const Header = () => {
@@ -6,8 +6,18 @@ const Header = () => {
 
   const personalInfo = {
     name: 'Fahim',
-    // Full name and title are not needed for this minimal mobile menu style
   };
+
+  const menuItems = [
+    { name: 'Home', href: '#home' },
+    { name: 'About', href: '#about' },
+    { name: 'Education', href: '#education' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Portfolio', href: '#portfolio' },
+    { name: 'Pictures', href: '#pictures' },
+    { name: 'References', href: '#references' }, 
+  ];
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -16,53 +26,96 @@ const Header = () => {
   const handleNavLinkClick = () => {
     setIsMobileMenuOpen(false);
   };
-  
-  // Use useEffect to prevent body scrolling when the menu is open
-  React.useEffect(() => {
+
+  // Scroll to hero section when clicking on the logo/name
+  const scrollToHero = (e) => {
+    e.preventDefault();
+    const heroSection = document.getElementById('home');
+    if (heroSection) {
+      heroSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
+  // Effect to prevent body scrolling when the menu is open
+  useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
+    // Cleanup function to reset overflow when component unmounts
     return () => {
       document.body.style.overflow = 'unset';
     };
   }, [isMobileMenuOpen]);
 
-
   return (
     <header className={styles.header}>
       <div className={styles.container}>
         <div className={styles.logo}>
-          <h1>{personalInfo.name.toLowerCase()}</h1>
+          <h1>
+            <a 
+              href="#home" 
+              onClick={scrollToHero}
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
+              {personalInfo.name.toLowerCase()}
+            </a>
+          </h1>
         </div>
 
         {/* Regular navigation (hidden on mobile) */}
         <nav className={styles.desktopNav}>
           <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#pictures">Pictures</a></li>
-            <li><a href="#references">References</a></li>
+            {menuItems.map((item) => (
+              <li key={item.name}>
+                <a 
+                  href={item.href} 
+                  onClick={(e) => {
+                    if (item.href === '#home') {
+                      e.preventDefault();
+                      scrollToHero(e);
+                    } else {
+                      handleNavLinkClick();
+                    }
+                  }}
+                >
+                  {item.name}
+                </a>
+              </li>
+            ))}
           </ul>
         </nav>
 
         {/* Hamburger Icon (visible on mobile) */}
-        <div className={styles.hamburgerMenu} onClick={toggleMobileMenu}>
+        <div 
+          className={styles.hamburgerMenu} 
+          onClick={toggleMobileMenu} 
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-menu-navigation"
+          role="button"
+          tabIndex="0"
+        >
           <div className={styles.bar}></div>
           <div className={styles.bar}></div>
           <div className={styles.bar}></div>
         </div>
 
-        {/* Mobile Navigation Overlay/Sidebar - Minimal Style */}
-        <div className={`${styles.mobileNavOverlay} ${isMobileMenuOpen ? styles.open : ''}`}>
+        {/* Mobile Navigation Overlay/Sidebar */}
+        <div 
+          className={`${styles.mobileNavOverlay} ${isMobileMenuOpen ? styles.open : ''}`}
+          id="mobile-menu-navigation"
+        >
           
           {/* Close Button at the very top right */}
-          <div className={styles.closeButton} onClick={toggleMobileMenu}>
+          <div 
+            className={styles.closeButton} 
+            onClick={toggleMobileMenu}
+            role="button"
+            tabIndex="0"
+            aria-label="Close menu"
+          >
             <span className={styles.closeIcon}>&times;</span>
           </div>
           
@@ -70,14 +123,23 @@ const Header = () => {
           <div className={styles.mobileNavContent}>
             <nav className={styles.mobileNav}>
               <ul>
-                <li><a href="#home" onClick={handleNavLinkClick}>Home</a></li>
-                <li><a href="#about" onClick={handleNavLinkClick}>About</a></li>
-                <li><a href="#education" onClick={handleNavLinkClick}>Education</a></li>
-                <li><a href="#experience" onClick={handleNavLinkClick}>Experience</a></li>
-                <li><a href="#skills" onClick={handleNavLinkClick}>Skills</a></li>
-                <li><a href="#portfolio" onClick={handleNavLinkClick}>Portfolio</a></li>
-                <li><a href="#pictures" onClick={handleNavLinkClick}>Pictures</a></li>
-                <li><a href="#references" onClick={handleNavLinkClick}>References</a></li>
+                {menuItems.map((item) => (
+                  <li key={item.name}>
+                    <a 
+                      href={item.href} 
+                      onClick={(e) => {
+                        if (item.href === '#home') {
+                          e.preventDefault();
+                          scrollToHero(e);
+                        } else {
+                          handleNavLinkClick();
+                        }
+                      }}
+                    >
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </nav>
           </div>

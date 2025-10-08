@@ -1,27 +1,25 @@
 .footer {
-  padding: 10px 0;
+  padding: 20px 0;
   text-align: center;
   position: relative;
   overflow: hidden;
-  background-color: rgba(10, 10, 20, 0.5);
+  background: linear-gradient(135deg, rgba(10, 10, 20, 0.8) 0%, rgba(20, 20, 40, 0.9) 100%);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.6s ease-out;
 }
 
-.footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(to right, 
-      rgba(255, 255, 255, 0), 
-      rgba(255, 255, 255, 0.1), 
-      rgba(255, 255, 255, 0));
+.footer.visible {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .container {
   width: 100%;
   max-width: 1200px;
+  max-height: px;
   margin: 0 auto;
   padding: 0 20px;
   position: relative;
@@ -32,85 +30,196 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .footerSocial {
   display: flex;
-  gap: 10px;
+  gap: 15px;
 }
 
 .socialIcon {
-  width: 25px;
-  height: 25px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  color: var(--text-color);
+  color: var(--text-color, #ffffff);
   position: relative;
   overflow: hidden;
   z-index: 1;
-  transition: all 0.3s ease;
-  font-size: 12px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-size: 16px;
+  text-decoration: none;
+  animation: iconSlideIn 0.6s ease-out both;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.socialIcon::before {
-  content: '';
+@keyframes iconSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.socialIconInner {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.iconBackground {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
   top: 0;
   left: 0;
-  z-index: -1;
-  opacity: 0;
-  transition: all 0.3s ease;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1;
 }
 
 .socialIcon:hover {
-  transform: translateY(-2px);
+  transform: translateY(-5px) scale(1.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.socialIcon:hover .socialIconInner {
+  transform: scale(1.2);
   color: white;
 }
 
-.socialIcon:hover::before {
-  opacity: 1;
+.socialIcon:hover .iconBackground {
+  transform: scale(1);
+}
+
+.socialIcon.hovered {
+  transform: translateY(-5px) scale(1.1);
+}
+
+.socialIcon.hovered .iconBackground {
+  transform: scale(1);
+}
+
+.socialIcon.hovered .socialIconInner {
+  transform: scale(1.2);
+  color: white;
 }
 
 .copyright {
-  font-size: 12px;
-  color: var(--text-muted);
+  font-size: 14px;
+  color: var(--text-muted, #888);
   margin: 0;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  animation: fadeIn 0.8s ease-out 0.2s both;
 }
 
-.adminLink {
-  font-size: 12px;
-  color: var(--text-muted);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Pulse animation for continuous subtle effect */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.footerSocial:hover .socialIcon:not(:hover) {
+  animation: pulse 2s infinite;
 }
 
 /* Media Queries */
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .footerContent {
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
+    text-align: center;
   }
   
   .footer {
-    padding: 10px 0;
+    padding: 15px 0;
   }
   
   .socialIcon {
-    width: 20px;
-    height: 20px;
-    font-size: 10px;
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
   }
   
   .copyright {
-    font-size: 10px;
+    font-size: 12px;
     order: 2;
   }
   
   .footerSocial {
     order: 1;
+    gap: 12px;
   }
-} 
+}
+
+@media (max-width: 480px) {
+  .footerSocial {
+    gap: 10px;
+  }
+  
+  .socialIcon {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+  
+  .copyright {
+    font-size: 11px;
+  }
+  
+  .container {
+    padding: 0 15px;
+  }
+}
+
+/* Optional: Add a subtle floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.footerSocial .socialIcon:nth-child(odd) {
+  animation: float 4s ease-in-out infinite;
+}
+
+.footerSocial .socialIcon:nth-child(even) {
+  animation: float 4s ease-in-out 2s infinite;
+}

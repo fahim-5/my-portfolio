@@ -3,10 +3,46 @@ import styles from './Skills.module.css';
 // Import data from JSON file
 import skillsData from '../database/skillsData.json';
 
+// Import React Icons to replace Font Awesome
+import { 
+  FaReact, FaJsSquare, FaNodeJs, FaPython, FaHtml5, FaCss3Alt, 
+  FaDatabase, FaGitAlt, FaDocker, FaCode, FaServer, FaSitemap, 
+  FaJava, FaCogs, FaPuzzlePiece, FaComments, FaUsers, FaUsersCog,
+  FaClock, FaSync, FaBrain, FaLightbulb, FaSearch, FaLanguage
+} from 'react-icons/fa';
+
 const Skills = () => {
   const [activeTab, setActiveTab] = useState('technical');
   const skillItems = useRef([]);
   
+  // Map icon names to React Icons components
+  const iconMap = {
+    'fab fa-react': FaReact,
+    'fab fa-js-square': FaJsSquare,
+    'fab fa-node-js': FaNodeJs,
+    'fab fa-python': FaPython,
+    'fab fa-html5': FaHtml5,
+    'fab fa-css3-alt': FaCss3Alt,
+    'fas fa-database': FaDatabase,
+    'fab fa-git-alt': FaGitAlt,
+    'fab fa-docker': FaDocker,
+    'fas fa-code': FaCode,
+    'fas fa-server': FaServer,
+    'fas fa-sitemap': FaSitemap,
+    'fab fa-java': FaJava,
+    'fas fa-cogs': FaCogs,
+    'fas fa-puzzle-piece': FaPuzzlePiece,
+    'fas fa-comments': FaComments,
+    'fas fa-users': FaUsers,
+    'fas fa-users-cog': FaUsersCog,
+    'fas fa-clock': FaClock,
+    'fas fa-sync': FaSync,
+    'fas fa-brain': FaBrain,
+    'fas fa-lightbulb': FaLightbulb,
+    'fas fa-search': FaSearch,
+    'fas fa-language': FaLanguage
+  };
+
   useEffect(() => {
     // Make sure all skill items are initially visible
     setTimeout(() => {
@@ -73,20 +109,19 @@ const Skills = () => {
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>Skills & Expertise</h2>
       
-        
         <div className={styles.skillsHeader}>
           <button 
             className={`${styles.tabButton} ${activeTab === 'technical' ? styles.active : ''}`}
             onClick={() => setActiveTab('technical')}
           >
-            <i className="fas fa-code"></i>
+            <FaCode />
             Technical Skills
           </button>
           <button 
             className={`${styles.tabButton} ${activeTab === 'soft' ? styles.active : ''}`}
             onClick={() => setActiveTab('soft')}
           >
-            <i className="fas fa-users"></i>
+            <FaUsers />
             Soft Skills
           </button>
           {hasLanguages && (
@@ -94,40 +129,43 @@ const Skills = () => {
               className={`${styles.tabButton} ${activeTab === 'languages' ? styles.active : ''}`}
               onClick={() => setActiveTab('languages')}
             >
-              <i className="fas fa-language"></i>
+              <FaLanguage />
               Languages
             </button>
           )}
         </div>
         
         <div className={styles.skillsGrid}>
-          {getActiveSkills().map((skill, index) => (
-            <div 
-              key={index} 
-              className={`${styles.skillCard} ${styles.glassCard}`}
-              ref={el => skillItems.current[index] = el}
-              title={skill.description}
-            >
-              <div className={styles.skillIcon}>
-                <i className={skill.icon}></i>
+          {getActiveSkills().map((skill, index) => {
+            const IconComponent = iconMap[skill.icon];
+            return (
+              <div 
+                key={index} 
+                className={`${styles.skillCard} ${styles.glassCard}`}
+                ref={el => skillItems.current[index] = el}
+                title={skill.description}
+              >
+                <div className={styles.skillIcon}>
+                  {IconComponent ? <IconComponent /> : <FaCode />}
+                </div>
+                <div className={styles.skillContent}>
+                  <h3>{skill.name}</h3>
+                  {skill.level && (
+                    <div className={styles.skillLevel}>
+                      <div className={`${styles.skillLevelBar} ${styles[skill.level]}`}></div>
+                      <p className={styles.skillLevelText}>
+                        {skill.level.charAt(0).toUpperCase() + skill.level.slice(1)}
+                        <span className={styles.tooltip}>{getLevelDescription(skill.level)}</span>
+                      </p>
+                    </div>
+                  )}
+                  {skill.category && (
+                    <span className={styles.skillCategory}>{skill.category}</span>
+                  )}
+                </div>
               </div>
-              <div className={styles.skillContent}>
-                <h3>{skill.name}</h3>
-                {skill.level && (
-                  <div className={styles.skillLevel}>
-                    <div className={`${styles.skillLevelBar} ${styles[skill.level]}`}></div>
-                    <p className={styles.skillLevelText}>
-                      {skill.level.charAt(0).toUpperCase() + skill.level.slice(1)}
-                      <span className={styles.tooltip}>{getLevelDescription(skill.level)}</span>
-                    </p>
-                  </div>
-                )}
-                {skill.category && (
-                  <span className={styles.skillCategory}>{skill.category}</span>
-                )}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
