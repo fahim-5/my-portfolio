@@ -7,6 +7,7 @@
     "quote": "Working with this developer was an absolute pleasure. Their problem-solving skills and attention to detail helped us deliver three major projects ahead of schedule. They bring both technical excellence and positive energy to every team.",
     "image": "/assets/references/raima-dcosta.jpg",
     "email": "raima.dcosta@techinnovate.com",
+    "phone": "+1 (555) 123-4567",
     "linkedin": "https://linkedin.com/in/raimadcosta"
   },
   {
@@ -17,6 +18,7 @@
     "quote": "One of the most talented full-stack developers I've worked with. They took our legacy codebase and modernized it with cutting-edge technologies while maintaining perfect backward compatibility. A true professional who mentors junior team members.",
     "image": "/assets/references/michael-chen.jpg",
     "email": "michael.chen@digitalfuture.com",
+    "phone": "+1 (555) 987-6543",
     "linkedin": "https://linkedin.com/in/michaelchen"
   },
   {
@@ -27,6 +29,7 @@
     "quote": "An exceptional student who consistently demonstrated deep understanding of complex algorithms and software architecture. Their projects showcased not only technical proficiency but also innovative thinking and practical problem-solving abilities.",
     "image": "/assets/references/sarah-johnson.jpg",
     "email": "sarah.johnson@uiu.edu",
+    "phone": "+1 (555) 246-8013",
     "linkedin": "https://linkedin.com/in/sarahjohnson"
   },
   {
@@ -37,6 +40,7 @@
     "quote": "Outstanding ability to translate business requirements into technical solutions. Delivered a critical MVP under tight deadlines while maintaining code quality and best practices. A reliable and skilled developer any team would be lucky to have.",
     "image": "/assets/references/alex-rodriguez.jpg",
     "email": "alex.rodriguez@startupventures.com",
+    "phone": "+1 (555) 135-7924",
     "linkedin": "https://linkedin.com/in/alexrodriguez"
   }
 ]

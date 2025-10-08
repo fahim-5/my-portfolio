@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { FaChevronLeft, FaChevronRight, FaQuoteLeft } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaQuoteLeft, FaPhone, FaEnvelope, FaCopy, FaTimes } from 'react-icons/fa';
 import styles from './References.module.css';
 import referencesData from '../database/referencesData.json';
 
@@ -17,6 +17,11 @@ const References = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [showAll, setShowAll] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  
+  // New state for Modal
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
+  const [copyStatus, setCopyStatus] = useState({ state: '', item: '' }); // State for copy notification
 
   const fallbackImages = {
     "Raima D'costa": raimaImage,
@@ -68,6 +73,36 @@ const References = () => {
     }
   };
 
+  // --- Modal Functions ---
+  const openModal = (reference) => {
+    setModalContent(reference);
+    setModalOpen(true);
+    setCopyStatus({ state: '', item: '' }); // Reset copy status
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setModalContent(null);
+    setCopyStatus({ state: '', item: '' });
+  };
+  
+  // Function to copy text to clipboard
+  const copyToClipboard = (text, type) => {
+    const el = document.createElement('textarea');
+    el.value = text;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+
+    setCopyStatus({ state: 'success', item: type });
+
+    setTimeout(() => {
+      setCopyStatus({ state: '', item: '' });
+    }, 1500);
+  };
+  // --- End Modal Functions ---
+
   // Detect mobile
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
@@ -87,13 +122,75 @@ const References = () => {
       { threshold: 0.1 }
     );
 
-    const items = referenceItems.current;
-    items.forEach((item) => item && observer.observe(item));
+    // Filter out nulls/undefined for items from the ref array
+    const items = referenceItems.current.filter(el => el != null); 
+    items.forEach((item) => observer.observe(item));
 
-    return () => items.forEach((item) => item && observer.unobserve(item));
+    return () => items.forEach((item) => observer.unobserve(item));
   }, [currentPage, showAll]);
 
   if (referencesData.length === 0) return null;
+
+  // --- Modal JSX Component ---
+  const ContactModal = () => {
+    if (!modalOpen || !modalContent) return null;
+
+    const { name, email, phone, company, position } = modalContent;
+
+    return (
+      <div className={styles.modalBackdrop} onClick={closeModal}>
+        <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
+          <button className={styles.modalCloseButton} onClick={closeModal} aria-label="Close">
+            <FaTimes />
+          </button>
+          
+          <h3 className={styles.modalTitle}>Contact {name}</h3>
+          <p className={styles.modalSubtitle}>{position} at {company}</p>
+
+          {/* Email Contact Item */}
+          <div className={styles.contactItem}>
+            <FaEnvelope className={styles.contactIcon} />
+            <div className={styles.contactDetails}>
+              <span className={styles.contactLabel}>Email:</span>
+              <a href={`mailto:${email}`} className={styles.contactValue}>{email}</a>
+            </div>
+            <button 
+              className={styles.copyButton} 
+              onClick={() => copyToClipboard(email, 'email')}
+              aria-label="Copy Email"
+            >
+              <FaCopy />
+            </button>
+          </div>
+
+          {/* Phone Contact Item */}
+          <div className={styles.contactItem}>
+            <FaPhone className={styles.contactIcon} />
+            <div className={styles.contactDetails}>
+              <span className={styles.contactLabel}>Phone:</span>
+              <a href={`tel:${phone}`} className={styles.contactValue}>{phone}</a>
+            </div>
+            <button 
+              className={styles.copyButton} 
+              onClick={() => copyToClipboard(phone, 'phone number')}
+              aria-label="Copy Phone Number"
+            >
+              <FaCopy />
+            </button>
+          </div>
+          
+          {/* Copy Notification (positioned globally by CSS) */}
+          {copyStatus.state === 'success' && (
+            <div className={styles.copyNotification}>
+              Copied {copyStatus.item}!
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  };
+  // --- End Modal JSX Component ---
+
 
   return (
     <section id="references" className={styles.references}>
@@ -108,6 +205,15 @@ const References = () => {
                 className={`${styles.referenceCard} ${styles.glassCard}`}
                 ref={(el) => (referenceItems.current[index] = el)}
               >
+                {/* Contact Button added to top right */}
+                <button 
+                    className={styles.contactButton} 
+                    onClick={() => openModal(reference)}
+                    aria-label={`Contact ${reference.name}`}
+                >
+                    <FaPhone /> Contact
+                </button>
+                
                 <div className={styles.refHeader}>
                   <div className={styles.referenceImage}>
                     <img
@@ -147,7 +253,7 @@ const References = () => {
           </div>
         </div>
 
-        {/* Desktop Pagination */}
+        {/* Desktop Pagination and Mobile See More... (rest of the component) */}
         {!isMobile && totalPages > 1 && (
           <>
             <div className={styles.pagination}>
@@ -181,9 +287,7 @@ const References = () => {
               </button>
             </div>
 
-            <div className={styles.pageIndicator}>
-              Page {currentPage + 1} of {totalPages}
-            </div>
+            
           </>
         )}
 
@@ -199,6 +303,9 @@ const References = () => {
           </div>
         )}
       </div>
+      
+      {/* Render the Modal */}
+      <ContactModal />
     </section>
   );
 };

@@ -9,7 +9,7 @@ const Footer = () => {
   const socialLinks = [
     {
       name: 'linkedin',
-      url: 'https://www.linkedin.com/in/fahim-faysal/',
+      url: 'https://www.linkedin.com/in/fahim-faysal-6a6425253/',
       icon: <FaLinkedinIn />,
       color: '#0077b5'
     },
@@ -21,13 +21,13 @@ const Footer = () => {
     },
     {
       name: 'twitter',
-      url: 'https://twitter.com/fahimfaysal',
+      url: 'https://x.com/bafu_44',
       icon: <FaTwitter />,
       color: '#1da1f2'
     },
     {
       name: 'instagram',
-      url: 'https://www.instagram.com/fahimfaysal/',
+      url: 'https://www.instagram.com/bafu.06/',
       icon: <FaInstagram />,
       color: '#e4405f'
     }
