@@ -1,0 +1,168 @@
+.experience {
+  padding: 60px 0;
+  border-bottom: 1px solid #e0e0e0;
+  position: relative;
+  width: 100%;
+  background-color: #0a0a14;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.sectionTitle {
+  font-size: 28px;
+  font-weight: 700;
+  position: relative;
+  margin-bottom: 40px;
+  color: #2d3748;
+  display: inline-block;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -12px;
+  width: 50px;
+  height: 3px;
+  background: #2d3748;
+  border-radius: 2px;
+}
+
+.experienceGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.expItem {
+  padding: 25px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  will-change: opacity, transform;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.expItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #cbd5e0;
+}
+
+.expItem h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.expItem h3 span {
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.expItem h4 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #4a5568;
+  margin-bottom: 8px;
+}
+
+.expItem h5 {
+  font-size: 14px;
+  font-weight: 400;
+  color: #718096;
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+.expItem p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4a5568;
+  margin: 0;
+}
+
+.expItem.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Remove glass card effects and replace with clean design */
+.glassCard {
+  background-color: #ffffff;
+  backdrop-filter: none;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.glassCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  border-color: #cbd5e0;
+}
+
+/* Remove gradient effects and colorful borders */
+.expItem::after {
+  display: none;
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+  .container {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+  
+  .experienceGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .experience {
+    padding: 40px 0;
+  }
+  
+  .sectionTitle {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    font-size: 24px;
+  }
+  
+  .sectionTitle::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .expItem {
+    padding: 20px;
+  }
+  
+  .experienceGrid {
+    grid-template-columns: 1fr;
+  }
+}

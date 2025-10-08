@@ -1,0 +1,206 @@
+/* About.module.css */
+
+/* Define Key Colors for the Dark Theme 
+   - Background: #0d0b17
+   - Accent: #6a1b9a (Deep Violet/Indigo)
+   - Social Icon Bg (un-hovered): #181622 (Very dark slate)
+   - Text (Title): #ffffff
+   - Text (Paragraph): #c4c4c4
+*/
+
+.about {
+  /* Very dark background matching the image */
+  background-color: #0a0a14; 
+  min-height: 70vh;
+  padding: 80px 0;
+  width: 100%;
+  /* Fix: Ensure the section itself is constrained */
+  overflow: hidden; 
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 80px; /* Increased gap for visual spacing, matches image */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  /* Use padding for internal spacing, keeping max-width strict */
+  padding: 0 40px; 
+  position: relative;
+  align-items: flex-start;
+  z-index: 1;
+}
+
+/* --- Profile Sidebar --- */
+.profileSidebar {
+  flex: 0 0 300px; /* Adjusted width to match image proportions */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+.profileImage {
+  width: 100%;
+  max-width: 250px; /* Fixed size to match image */
+  height: 250px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 30px;
+  /* Deep violet border to match the ring in the image */
+  border: 3px solid #6a1b9a; 
+  box-shadow: none;
+}
+
+.profileImage::before {
+  display: none; /* Keep the previous removal of the gradient effect */
+}
+
+.profileImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.profileImage:hover img {
+  transform: scale(1.05);
+}
+
+/* --- Social Links - Key to the Design --- */
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.socialIcon {
+  width: 48px; /* Larger icon size to match the image */
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Dark background for the icon circle, matching the image */
+  background-color: #181622;
+  border-radius: 50%;
+  color: #c4c4c4; /* Default icon color (light grey) */
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.3s ease;
+  border: none; /* Removed border to match solid look */
+  box-shadow: none;
+}
+
+.socialIcon i {
+  z-index: 2;
+  font-size: 20px; /* Adjusted icon size */
+}
+
+.socialIcon::before {
+  display: none;
+}
+
+.socialIcon:hover {
+  transform: translateY(-2px);
+  /* Hover state: solid deep violet color */
+  background-color: #6a1b9a; 
+  color: #fff; /* White icon on hover */
+  /* Added subtle glow/shadow on hover */
+  box-shadow: 0 5px 15px rgba(106, 27, 154, 0.4); 
+}
+
+/* --- About Content Styling --- */
+.aboutContent {
+  flex: 1;
+  padding-top: 5px; /* Fine-tuned vertical alignment */
+}
+
+.sectionTitle {
+  font-size: 38px; /* Larger heading size */
+  font-weight: 700;
+  position: relative;
+  margin-bottom: 40px;
+  color: #ffffff; /* Pure white text */
+  display: inline-block;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 60px;
+  height: 4px;
+  /* Solid accent color for the underline, matching image */
+  background-color: #6a1b9a;
+  border-radius: 2px;
+}
+
+.aboutContent p {
+  color: #c4c4c4; /* Light grey text */
+  line-height: 1.7;
+  margin-bottom: 25px;
+  font-size: 17px;
+}
+
+/* --- Media Queries --- */
+@media (max-width: 1200px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .profileSidebar {
+    margin-bottom: 40px;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+  }
+  
+  .aboutContent {
+    text-align: left;
+    padding-top: 0;
+  }
+  
+  .sectionTitle {
+    display: block;
+    text-align: center;
+  }
+  
+  .sectionTitle::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding: 60px 0;
+  }
+  
+  .container {
+    gap: 30px;
+  }
+  
+  .profileImage {
+    max-width: 200px;
+    height: 200px;
+  }
+  
+  .socialIcon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .socialIcon i {
+    font-size: 16px;
+  }
+}

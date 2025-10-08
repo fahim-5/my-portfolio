@@ -1,0 +1,227 @@
+/*
+  Refined CSS for a minimalist, link-focused mobile menu 
+  that exactly matches the provided clean-style image.
+*/
+
+/* --- Header Component Root (Desktop/Mobile) --- */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(10, 10, 20, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 18px 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Container for Layout (Desktop/Mobile) --- */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* --- Logo Styling (fahim) --- */
+.logo h1 {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0;
+  background: linear-gradient(90deg, #6c5ce7, #00cec9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+
+/* --- Desktop Navigation Menu --- */
+.desktopNav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.desktopNav ul li {
+  margin-left: 30px;
+}
+
+.desktopNav ul li a {
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  padding: 5px 0;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+  position: relative;
+  display: block;
+}
+
+.desktopNav ul li a:hover {
+  color: var(--primary-color, #6c5ce7);
+  transform: translateY(-1px);
+}
+
+.desktopNav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background: linear-gradient(90deg, var(--primary-color, #6c5ce7), var(--accent-color, #00cec9));
+  transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.desktopNav ul li a:hover::after {
+  width: 100%;
+}
+
+
+/* --- Hamburger Menu Icon (Mobile Only) --- */
+.hamburgerMenu {
+  display: none; /* Hidden by default on desktop */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 5px;
+}
+
+.hamburgerMenu .bar {
+  width: 100%;
+  height: 3px;
+  background-color: var(--text-color, #fff);
+  border-radius: 2px;
+}
+
+
+/* --- Mobile Navigation Overlay/Sidebar --- */
+.mobileNavOverlay {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Hidden off-screen to the right */
+  width: 300px; /* Sidebar width */
+  height: 100vh;
+  background-color: #11111f; /* Very dark background */
+  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+  transition: right 0.4s ease-in-out;
+  z-index: 1002;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  overflow-y: auto; /* Enable scrolling if needed */
+}
+
+.mobileNavOverlay.open {
+  right: 0; /* Slides into view */
+}
+
+/* Close Button (X icon) - Positioned at the very top right of the overlay */
+.closeButton {
+  position: absolute;
+  top: 30px; /* Increased top spacing */
+  right: 25px; /* Increased right spacing */
+  font-size: 40px; /* Large, bold 'X' */
+  color: var(--text-color, #fff);
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s ease;
+  z-index: 1003; /* Ensure it's clickable */
+}
+
+.closeButton:hover {
+  color: var(--primary-color, #6c5ce7);
+}
+
+/* Main content area (just for links) */
+.mobileNavContent {
+  padding-top: 100px; /* Push links down below the close button */
+  padding-left: 40px; /* Indent links from the left edge */
+}
+
+/* --- Mobile Navigation Links (Crucial part matching image) --- */
+.mobileNav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobileNav ul li {
+  margin: 0; /* No external vertical margin */
+}
+
+.mobileNav ul li a {
+  /* Larger font and bold as seen in the image */
+  font-size: 24px; 
+  font-weight: 600; 
+  letter-spacing: 1px;
+  
+  color: var(--text-color, #fff);
+  text-decoration: none;
+  display: inline-block; /* Essential for underline placement */
+  padding: 20px 0; /* Large vertical spacing */
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+/* Underline effect matching the image */
+.mobileNav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 100%; /* The line is always present */
+  height: 2px;
+  bottom: 10px; /* Position under the text */
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.15); /* Subtle light grey line */
+  transition: background-color 0.3s ease;
+}
+
+/* Hover/Active state for links */
+.mobileNav ul li a:hover,
+.mobileNav ul li a.active {
+  color: var(--primary-color, #6c5ce7);
+}
+
+/* Hover/Active state for the underline: it should glow/brighten */
+.mobileNav ul li a:hover::after,
+.mobileNav ul li a.active::after {
+  /* Use gradient or primary color for highlight, matching the logo color */
+  background: linear-gradient(90deg, var(--primary-color, #6c5ce7), var(--accent-color, #00cec9));
+}
+
+
+/* --- Media Queries for Responsiveness --- */
+
+/* Tablet breakpoint to show mobile menu */
+@media (max-width: 992px) {
+  .desktopNav {
+    display: none;
+  }
+  .hamburgerMenu {
+    display: flex;
+  }
+  .container {
+    padding: 0 25px;
+  }
+}
+
+/* Smaller mobile screens */
+@media (max-width: 576px) {
+  .container {
+    padding: 0 20px;
+  }
+  .mobileNavOverlay {
+    width: 90%; 
+    max-width: 320px;
+    right: -91%;
+  }
+}

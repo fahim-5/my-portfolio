@@ -1,0 +1,102 @@
+/* --- Global Variables and Theme Setup --- */
+:root {
+  /* Colors */
+  --primary-color: #6C63FF; /* Purple/Blue accent */
+  --accent-color: #FF6584; /* Pink accent */
+  --background-color: #121212; /* Very dark background */
+  --card-bg-dark: #1e1e1e;
+  
+  /* Text */
+  --text-color: #f0f0f0; /* Light text */
+  --text-muted: #b0b0b0; /* Muted/gray text */
+
+  /* Glassmorphism/Borders */
+  --glass-bg: rgba(255, 255, 255, 0.08); /* 8% white for glass effect */
+  --border-color: rgba(255, 255, 255, 0.15); /* Light border for glass */
+
+  /* Typography */
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+
+  color-scheme: dark;
+}
+
+/* --- The Universal Fix for Horizontal Scroll and Spacing Issues --- */
+
+/* 1. Global Box-Sizing Reset */
+/* This ensures that padding and borders are included in an element's total width and height, preventing accidental overflows. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. Body/HTML Overflow Fix */
+/* This explicitly hides any content that attempts to push outside the horizontal boundaries of the screen. */
+html, body {
+  width: 100%;
+  /* The fix for horizontal scrollbar: */
+  overflow-x: hidden; 
+}
+
+/* --- Core Body and Typography Styling --- */
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+#root {
+  /* Ensure the main container takes the full width */
+  width: 100%; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+a {
+  font-weight: 500;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+/* --- Utility/Component-like Styles (Optional but helpful) --- */
+
+.container {
+  width: 100%;
+  max-width: 1200px; /* Standardizing max-width for content */
+  margin: 0 auto;
+  padding: 0 30px; /* Responsive padding on the sides */
+}
+
+/* Hide scrollbar for a cleaner look (optional) */
+/* Works on WebKit (Chrome, Safari) */
+body::-webkit-scrollbar {
+  width: 8px;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(108, 99, 255, 0.5); /* Primary color */
+  border-radius: 4px;
+}
+body::-webkit-scrollbar-track {
+  background-color: var(--background-color);
+}

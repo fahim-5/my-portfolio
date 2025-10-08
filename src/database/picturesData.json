@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Beautiful Mosque – Night View",
+    "category": "Horizontal",
+    "description": "Bathed in soft golden lights, the mosque stands like a spiritual lighthouse against the midnight sky. Its domes shimmer under the moonlight, while the reflection of minarets dances gently across the polished marble courtyard. The peaceful silence is broken only by the distant hum of evening prayers, creating a tranquil ambiance that feels both sacred and timeless.",
+    "link": "#",
+    "image": "/assets/Mosjid.jpg"
+  },
+  {
+    "title": "University Ground",
+    "category": "Memories",
+    "description": "The university ground buzzes with life as students gather after classes, their laughter and footsteps echoing across the open field. Under the warm embrace of the setting sun, cricket games unfold, frisbees soar, and friendships deepen with every shared moment. It’s more than a playground — it’s a living canvas of energy, bonding, and the pure joy of youth in motion.",
+    "link": "#",
+    "image": "/assets/gorund.jpg"
+  },
+  {
+    "title": "Urban Architecture",
+    "category": "Cityscape",
+    "description": "Rich with history and wrapped in silence, the ancient building stands with grace and dignity. Its weathered stones, intricate carvings, and faded textures tell stories of a forgotten era. Ivy creeps along its walls, and the scent of age lingers in the air — a poetic reminder of the craftsmanship, culture, and human spirit that once brought it to life.",
+    "link": "#",
+    "image": "/assets/urban.jpg"
+  }
+]

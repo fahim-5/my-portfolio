@@ -1,0 +1,19 @@
+/* --- App.css ---
+   This file handles the main layout of the application wrapper.
+*/
+
+.App {
+  /* This ensures the main app wrapper uses the full width established in index.css */
+  width: 100%; 
+  min-height: 100vh;
+  position: relative;
+  /* Add padding to the top/bottom if header/footer aren't fixed */
+}
+
+/* Ensures sections fill the full width */
+section {
+  width: 100%;
+  /* Prevents margins on content elements from creating extra space at the edge */
+  padding-left: 0;
+  padding-right: 0;
+}

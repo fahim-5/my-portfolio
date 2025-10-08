@@ -1,0 +1,28 @@
+{
+  "greeting": "Hello, I'm",
+  "name": "Fahim",
+  "lastName": "Faysal",
+  "description": "A Full-Stack Software Developer & Data Enthusiast. I craft scalable solutions, design sleek user interfaces, and bring ideas to life through clean code and data-driven innovation. Let's build something impactful.",
+  "jobTitle": "Software Developer",
+  "stats": [
+    { "value": "1+", "label": "Years Experience" },
+    { "value": "20+", "label": "Projects Completed" },
+    { "value": "0", "label": "Happy Clients" }
+  ],
+  "buttonText": "Get In Touch",
+  "cvButtonText": "View My CV",
+  "cvLink": "assets/Fahim Faysal.pdf",
+  "profileImageUrl": "../assets/Home.png",
+
+  "personalInfo": {
+    "email": "fahimfaysal.dev@gmail.com",
+    "phone": "+8801XXXXXXXXX",
+    "location": "Dhaka, Bangladesh",
+    "socialLinks": {
+      "linkedin": "https://linkedin.com/in/fahimfaysal",
+      "github": "https://github.com/fahimfaysal",
+      "twitter": "https://twitter.com/fahimfaysal",
+      "instagram": "https://instagram.com/fahimfaysal"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "degree": "Bachelor in Computer Science",
+    "institution": "United International University",
+    "location": "Dhaka, Bangladesh",
+    "period": "Current Active",
+    "description": "University life reshaped my vision — turning raw curiosity into purposeful ambition. From sleepless nights debugging code to collaborative breakthroughs in full-stack projects, it's been a journey of growth, grit, and discovery. Each line of code not only taught me logic but also sparked a deeper love for innovation and impact."
+  },
+  {
+    "degree": "Higher Secondary Certificate (HSC)",
+    "institution": "Kholahati Cantonment School & College",
+    "location": "Dinajpur, Bangladesh",
+    "period": "Jun 2019 – Mar 2021",
+    "description": "HSC life was a bridge between childhood and adulthood — a time of quiet pressure, last-minute revisions, and dreams bigger than classrooms. Through late-night study sessions and newfound independence, I grew resilient, focused, and ready to take on the real world."
+  },
+  {
+    "degree": "Secondary School Certificate (SSC)",
+    "institution": "Saint Philip's High School",
+    "location": "Dinajpur, Bangladesh",
+    "period": "Jan 2009 – Jan 2019",
+    "description": "The school bell rang one last time, and just like that, an entire chapter closed. From morning assemblies to shared tiffin breaks, school life taught me discipline, dreams, and deep friendships. It was a journey of innocent laughter, silent struggles, and unforgettable lessons."
+  }
+]

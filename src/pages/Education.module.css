@@ -1,0 +1,172 @@
+/* Education.module.css */
+
+/* Define Key Colors for the Dark Theme (Assume these are your variables)
+   --bg-dark: #0d0b17;
+   --card-bg: #141221;        // Darker background for the cards
+   --accent-color: #6a1b9a;   // Deep Violet/Indigo
+   --text-color: #ffffff;    // Pure White for Headings
+   --text-muted: #c4c4c4;    // Light Grey for Paragraphs
+   --glass-bg: rgba(20, 18, 33, 0.7); // Semi-transparent card background
+   --border-color: rgba(106, 27, 154, 0.3); // Accent-based border color
+   --shadow-color: rgba(106, 27, 154, 0.5); // Accent-based shadow
+*/
+
+.education {
+  /* Match the dark background */
+  background-color: #0a0a14;
+  padding: 80px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px; /* Set max-width for better control */
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.sectionTitle {
+  font-size: 38px; /* Increased size to match About title */
+  font-weight: 700;
+  position: relative;
+  margin-bottom: 50px; /* Increased bottom margin */
+  color: #ffffff; /* Pure white text */
+  display: inline-block;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 60px; /* Increased length to match About line */
+  height: 4px;
+  /* Solid accent color for the underline */
+  background-color: #6a1b9a; 
+  border-radius: 2px;
+}
+
+.educationGrid {
+  display: grid;
+  /* Ensured the cards don't get too small or too big */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px; /* Increased gap */
+  width: 100%;
+}
+
+.eduItem {
+  padding: 30px; /* Increased padding */
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+  will-change: opacity, transform;
+}
+
+/* Vertical Accent Line on the left */
+.eduItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  /* Solid accent color for the line (removed gradient) */
+  background-color: #6a1b9a; 
+  transition: height 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.eduItem:hover {
+  transform: translateY(-5px);
+  /* Added a distinct shadow with an accent glow */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 
+              0 0 15px rgba(106, 27, 154, 0.6);
+}
+
+.eduItem:hover::before {
+  height: 100%;
+}
+
+.eduItem h3 {
+  font-size: 24px; /* Larger degree title */
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.eduItem h4 {
+  font-size: 17px;
+  font-weight: 500;
+  /* Accent color for the institution name */
+  color: #6a1b9a; 
+  margin-bottom: 10px;
+}
+
+.eduItem h5 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #9c9c9c; /* Slightly darker muted text */
+  margin-bottom: 15px;
+}
+
+.eduItem p {
+  font-size: 15px;
+  color: #c4c4c4; /* Light grey text */
+}
+
+.eduItem.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Glass card effect (updated to match the image look) */
+.glassCard {
+  /* Very dark, semi-transparent background */
+  background-color: rgba(20, 18, 33, 0.7);
+  backdrop-filter: blur(5px);
+  /* Border uses the accent color for distinction */
+  border: 1px solid rgba(106, 27, 154, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+  .container {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+  
+  .educationGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .sectionTitle {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+  
+  .sectionTitle::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .eduItem h3 {
+    font-size: 20px;
+  }
+}

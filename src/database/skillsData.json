@@ -1,0 +1,197 @@
+{
+  "technical": [
+    {
+      "name": "React",
+      "level": "advanced",
+      "icon": "fab fa-react",
+      "category": "frontend",
+      "description": "Building dynamic and responsive user interfaces with modern React patterns"
+    },
+    {
+      "name": "JavaScript",
+      "level": "expert",
+      "icon": "fab fa-js-square",
+      "category": "programming",
+      "description": "Advanced ES6+ features, asynchronous programming, and modern JavaScript patterns"
+    },
+    {
+      "name": "Node.js",
+      "level": "advanced",
+      "icon": "fab fa-node-js",
+      "category": "backend",
+      "description": "Server-side development, REST APIs, and real-time applications"
+    },
+    {
+      "name": "Python",
+      "level": "advanced",
+      "icon": "fab fa-python",
+      "category": "programming",
+      "description": "Data analysis, automation, and backend development with Django/Flask"
+    },
+    {
+      "name": "HTML5",
+      "level": "expert",
+      "icon": "fab fa-html5",
+      "category": "frontend",
+      "description": "Semantic markup, accessibility, and modern HTML5 features"
+    },
+    {
+      "name": "CSS3",
+      "level": "advanced",
+      "icon": "fab fa-css3-alt",
+      "category": "frontend",
+      "description": "Modern CSS, Flexbox, Grid, animations, and responsive design"
+    },
+    {
+      "name": "MongoDB",
+      "level": "intermediate",
+      "icon": "fas fa-database",
+      "category": "database",
+      "description": "NoSQL database design, aggregation pipelines, and data modeling"
+    },
+    {
+      "name": "MySQL",
+      "level": "intermediate",
+      "icon": "fas fa-database",
+      "category": "database",
+      "description": "Relational database design, SQL queries, and optimization"
+    },
+    {
+      "name": "Git",
+      "level": "advanced",
+      "icon": "fab fa-git-alt",
+      "category": "tools",
+      "description": "Version control, branching strategies, and collaborative workflows"
+    },
+    {
+      "name": "Docker",
+      "level": "elementary",
+      "icon": "fab fa-docker",
+      "category": "devops",
+      "description": "Containerization, Docker compose, and deployment workflows"
+    },
+    {
+      "name": "TypeScript",
+      "level": "intermediate",
+      "icon": "fas fa-code",
+      "category": "programming",
+      "description": "Type-safe JavaScript development and modern TypeScript patterns"
+    },
+    {
+      "name": "Express.js",
+      "level": "advanced",
+      "icon": "fas fa-server",
+      "category": "backend",
+      "description": "Web application framework for Node.js, middleware, and routing"
+    },
+    {
+      "name": "Redux",
+      "level": "intermediate",
+      "icon": "fas fa-sitemap",
+      "category": "frontend",
+      "description": "State management for complex React applications"
+    },
+    {
+      "name": "Java",
+      "level": "intermediate",
+      "icon": "fab fa-java",
+      "category": "programming",
+      "description": "Object-oriented programming and enterprise application development"
+    },
+    {
+      "name": "C++",
+      "level": "intermediate",
+      "icon": "fas fa-cogs",
+      "category": "programming",
+      "description": "System programming, algorithms, and performance optimization"
+    }
+  ],
+  "soft": [
+    {
+      "name": "Problem Solving",
+      "level": "advanced",
+      "icon": "fas fa-puzzle-piece",
+      "category": "analytical",
+      "description": "Analytical thinking and creative solutions for complex challenges"
+    },
+    {
+      "name": "Communication",
+      "level": "advanced",
+      "icon": "fas fa-comments",
+      "category": "interpersonal",
+      "description": "Clear technical communication and effective team collaboration"
+    },
+    {
+      "name": "Teamwork",
+      "level": "advanced",
+      "icon": "fas fa-users",
+      "category": "collaboration",
+      "description": "Collaborative development and cross-functional team integration"
+    },
+    {
+      "name": "Leadership",
+      "level": "intermediate",
+      "icon": "fas fa-users-cog",
+      "category": "management",
+      "description": "Project guidance and team mentorship in technical environments"
+    },
+    {
+      "name": "Time Management",
+      "level": "advanced",
+      "icon": "fas fa-clock",
+      "category": "productivity",
+      "description": "Efficient task prioritization and deadline management"
+    },
+    {
+      "name": "Adaptability",
+      "level": "advanced",
+      "icon": "fas fa-sync",
+      "category": "flexibility",
+      "description": "Quick learning and adaptation to new technologies and methodologies"
+    },
+    {
+      "name": "Critical Thinking",
+      "level": "advanced",
+      "icon": "fas fa-brain",
+      "category": "analytical",
+      "description": "Logical analysis and evidence-based decision making"
+    },
+    {
+      "name": "Creativity",
+      "level": "intermediate",
+      "icon": "fas fa-lightbulb",
+      "category": "innovation",
+      "description": "Innovative approaches to technical challenges and user experience"
+    },
+    {
+      "name": "Attention to Detail",
+      "level": "expert",
+      "icon": "fas fa-search",
+      "category": "quality",
+      "description": "Meticulous code review and quality assurance practices"
+    }
+  ],
+  "languages": [
+    {
+      "name": "English",
+      "level": "advanced",
+      "icon": "fas fa-language",
+      "proficiency": "Fluent in technical communication and documentation",
+      "description": "Professional working proficiency"
+    },
+    {
+      "name": "Bengali",
+      "level": "native",
+      "icon": "fas fa-language",
+      "proficiency": "Native speaker with full cultural understanding",
+      "description": "Native proficiency"
+    },
+    {
+      "name": "Hindi",
+      "level": "elementary",
+      "icon": "fas fa-language",
+      "proficiency": "Basic conversational skills",
+      "description": "Elementary proficiency"
+    }
+  ]
+}
