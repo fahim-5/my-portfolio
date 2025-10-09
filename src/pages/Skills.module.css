@@ -66,7 +66,7 @@
   bottom: -10px;
   width: 40px;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  background:  #00cec9;
   border-radius: 2px;
 }
 
@@ -83,7 +83,7 @@
 /* Enhanced Tab Buttons */
 .tabButton {
   padding: 12px 24px;
-  background: rgba(255, 255, 255, 0.07);
+  background:  #00cec9;
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: #e0e0ff;
@@ -221,7 +221,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  background:  #00cec9;
   border-radius: 12px;
   flex-shrink: 0;
   box-shadow: 

@@ -154,13 +154,7 @@ const Pictures = () => {
             </div>
 
             {/* === Desktop Page Indicator === */}
-            {!isMobile && totalPages > 1 && (
-              <div className={styles.pageIndicator}>
-                <span className={styles.currentPage}>{currentPage + 1}</span>
-                <span className={styles.pageSeparator}>/</span>
-                <span className={styles.totalPages}>{totalPages}</span>
-              </div>
-            )}
+            
           </div>
 
           {/* === Desktop Navigation - Right Arrow === */}
@@ -173,6 +167,7 @@ const Pictures = () => {
             >
               <FaChevronRight />
             </button>
+            
           )}
         </div>
 
