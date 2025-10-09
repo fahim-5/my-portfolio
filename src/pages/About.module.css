@@ -16,6 +16,7 @@
   width: 100%;
   /* Fix: Ensure the section itself is constrained */
   overflow: hidden; 
+  padding-bottom: 20px;
 }
 
 .container {
@@ -52,7 +53,7 @@
   position: relative;
   margin-bottom: 30px;
   /* Deep violet border to match the ring in the image */
-  border: 3px solid #6a1b9a; 
+  border: 3px solid #08191f; 
   box-shadow: none;
 }
 
@@ -109,7 +110,7 @@
 .socialIcon:hover {
   transform: translateY(-2px);
   /* Hover state: solid deep violet color */
-  background-color: #6a1b9a; 
+  background-color: #00cec9;
   color: #fff; /* White icon on hover */
   /* Added subtle glow/shadow on hover */
   box-shadow: 0 5px 15px rgba(106, 27, 154, 0.4); 
@@ -138,7 +139,7 @@
   width: 60px;
   height: 4px;
   /* Solid accent color for the underline, matching image */
-  background-color: #6a1b9a;
+  background-color:#00cec9;
   border-radius: 2px;
 }
 
@@ -210,4 +211,28 @@
   padding: 92px 0;
   
 }
+}
+
+
+/* Mobile-specific text alignment */
+@media (max-width: 768px) {
+  .aboutContent {
+    text-align: left;
+    padding-top: 0;
+  }
+  
+  .bioText {
+    text-align: left;
+    font-size: 1rem;
+    line-height: 1.7;
+    letter-spacing: 0.2px;
+  }
+  
+  .sectionTitle {
+    text-align: center;
+  }
+  
+  .skillsHighlights {
+    justify-content: flex-start;
+  }
 }

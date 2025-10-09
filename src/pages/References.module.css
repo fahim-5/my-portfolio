@@ -36,11 +36,12 @@
   bottom: -15px;
   width: 60px;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  background: #00cec9;
   border-radius: 2px;
 }
 
-/* --- References Grid and Card Styling --- */
+
+/* --- References Grid and Card Styling (With Animation) --- */
 
 .referencesContainer {
   position: relative;
@@ -56,28 +57,40 @@
 .referenceCard {
   position: relative;
   padding: 30px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(25px);
+  transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+  will-change: opacity, transform;
 }
 
+/* Fade-in / Slide-up Animation */
 .referenceCard.revealed {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* Hover Glow & Lift */
+.referenceCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 206, 201, 0.2), 0 0 10px #00cec9;
+}
+
+/* Glass Styling */
 .glassCard {
   background-color: var(--glass-bg);
   backdrop-filter: blur(5px);
   border: 1px solid var(--border-color);
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
+/* Enhanced Hover for Glass */
 .glassCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 30px rgba(0, 206, 201, 0.25), 0 0 15px #00cec9;
 }
+
 
 .refHeader {
   display: flex;
@@ -92,7 +105,7 @@
   border-radius: 50%;
   overflow: hidden;
   margin-right: 20px;
-  border: 3px solid var(--primary-color);
+  border: 1px solid var(--primary-color);
   flex-shrink: 0;
 }
 
@@ -105,7 +118,7 @@
 .refInfo h3 {
   font-size: 1.25rem;
   margin: 0 0 5px 0;
-  color: var(--primary-color);
+  color: white;
 }
 
 .refPosition {
@@ -128,6 +141,15 @@
   border-radius: 8px;
   font-style: italic;
   margin-top: 15px;
+}
+
+
+
+
+.modalSubtitleInContact{
+  color: #00cec9;
+  font-size: 1rem;
+  margin-bottom: 25px;
 }
 
 .quoteIcon {
@@ -158,8 +180,8 @@
 
 .paginationButton {
   /* Default/Desktop size - excellent touch target */
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   background: var(--glass-bg);
   border: 1px solid var(--border-color);
@@ -168,18 +190,21 @@
   cursor: pointer;
   transition: background 0.3s, color 0.3s, transform 0.2s;
   flex-shrink: 0;
+  color: #00cec9;
 }
 
 .paginationButton:hover:not(.disabled) {
-  background: var(--primary-color);
+  background:  #00cec9;
   color: var(--background-color);
   transform: scale(1.05);
+
 }
 
 .paginationButton.disabled {
   opacity: 0.4;
   cursor: not-allowed;
   pointer-events: none;
+  color: aliceblue;
 }
 
 .paginationDots {
@@ -210,15 +235,16 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: var(--text-muted);
-  opacity: 0.5;
+  background-color: #00cec9;
   position: absolute;
   transition: opacity 0.3s, background-color 0.3s;
 }
 
 .paginationDot.active::after {
-  background-color: var(--primary-color);
-  opacity: 1;
+  background-color: rgb(54, 54, 103);
+  opacity: 0.5;
+  width: 6px;
+  height: 6px;
 }
 
 /* --- Mobile "See More" Button --- */
@@ -231,9 +257,9 @@
   padding: 12px 30px; 
   min-height: 48px; /* Guaranteed minimum touch target height */
   background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-  color: var(--background-color);
+  color: white;
   border: none;
-  border-radius: 25px;
+  border-radius: 10px;
   font-weight: 600;
   cursor: pointer;
   transition: opacity 0.3s, transform 0.2s;
@@ -257,7 +283,7 @@
   padding: 8px 15px;
   min-width: 44px; /* Guaranteed minimum touch target width */
   min-height: 36px; /* Guaranteed minimum touch target height */
-  background: var(--primary-color);
+  background: #00cec9;
   color: var(--background-color);
   border: none;
   border-radius: 20px;
@@ -326,6 +352,9 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+
+copyNotification
+
 .modalTitle {
   font-size: 1.8rem;
   margin-top: 0;
@@ -351,7 +380,7 @@
 
 .contactIcon {
   font-size: 1.2rem;
-  color: var(--primary-color);
+  color: #00cec9;
   margin-right: 15px;
   flex-shrink: 0;
 }
@@ -401,13 +430,13 @@
 
 .copyNotification {
   position: fixed;
-  bottom: 30px;
+  bottom: 35%;
   left: 50%;
   transform: translateX(-50%);
   background-color: var(--accent-color);
   color: var(--background-color);
-  padding: 10px 20px;
-  border-radius: 25px;
+  padding: 5px 10px;
+  border-radius: 10px;
   font-weight: 600;
   box-shadow: 0 4px 15px rgba(255, 101, 132, 0.5);
   z-index: 1001;
@@ -435,7 +464,7 @@
   }
 
   .seeMoreButton {
-    min-width: 90%;
+    min-width: 95%;
   }
  .sectionTitle{
     margin-top: 25px;
@@ -488,9 +517,10 @@
     height: 45px;
   }
 
-.sectionTitle{
-    margin-top: 25px;
+  .sectionTitle{
+    margin-top: 40px;
   }
+  
   .contactButton {
     top: 10px;
     right: 10px;
@@ -510,10 +540,10 @@
   
 
    .sectionTitle{
-    margin-top: 25px;
+    margin-top: 40px;
   }
    .seeMoreButton {
-    min-width: 90%;
+    min-width: 95%;
   }
   .referencesGrid {
     gap: 20px;

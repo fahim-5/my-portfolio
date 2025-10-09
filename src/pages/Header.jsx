@@ -27,24 +27,15 @@ const Header = () => {
     setIsMobileMenuOpen(false);
   };
 
-  // Scroll to hero section when clicking on the logo/name
   const scrollToHero = (e) => {
     e.preventDefault();
     const heroSection = document.getElementById('home');
-    if (heroSection) {
-      heroSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (heroSection) heroSection.scrollIntoView({ behavior: 'smooth' });
     setIsMobileMenuOpen(false);
   };
 
-  // Effect to prevent body scrolling when the menu is open
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    // Cleanup function to reset overflow when component unmounts
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'unset';
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -65,7 +56,7 @@ const Header = () => {
           </h1>
         </div>
 
-        {/* Regular navigation (hidden on mobile) */}
+        {/* Desktop Nav */}
         <nav className={styles.desktopNav}>
           <ul>
             {menuItems.map((item) => (
@@ -73,12 +64,8 @@ const Header = () => {
                 <a 
                   href={item.href} 
                   onClick={(e) => {
-                    if (item.href === '#home') {
-                      e.preventDefault();
-                      scrollToHero(e);
-                    } else {
-                      handleNavLinkClick();
-                    }
+                    if (item.href === '#home') scrollToHero(e);
+                    else handleNavLinkClick();
                   }}
                 >
                   {item.name}
@@ -88,62 +75,43 @@ const Header = () => {
           </ul>
         </nav>
 
-        {/* Hamburger Icon (visible on mobile) */}
+        {/* Hamburger / Cross Icon */}
         <div 
-          className={styles.hamburgerMenu} 
+          className={`${styles.hamburgerMenu} ${isMobileMenuOpen ? styles.open : ''}`}
           onClick={toggleMobileMenu} 
           aria-expanded={isMobileMenuOpen}
           aria-controls="mobile-menu-navigation"
           role="button"
           tabIndex="0"
         >
-          <div className={styles.bar}></div>
-          <div className={styles.bar}></div>
-          <div className={styles.bar}></div>
+          <span className={styles.bar}></span>
+          <span className={styles.bar}></span>
+          <span className={styles.bar}></span>
         </div>
+      </div>
 
-        {/* Mobile Navigation Overlay/Sidebar */}
-        <div 
-          className={`${styles.mobileNavOverlay} ${isMobileMenuOpen ? styles.open : ''}`}
-          id="mobile-menu-navigation"
-        >
-          
-          {/* Close Button at the very top right */}
-          <div 
-            className={styles.closeButton} 
-            onClick={toggleMobileMenu}
-            role="button"
-            tabIndex="0"
-            aria-label="Close menu"
-          >
-            <span className={styles.closeIcon}>&times;</span>
-          </div>
-          
-          {/* Main Content of Sidebar - Just links */}
-          <div className={styles.mobileNavContent}>
-            <nav className={styles.mobileNav}>
-              <ul>
-                {menuItems.map((item) => (
-                  <li key={item.name}>
-                    <a 
-                      href={item.href} 
-                      onClick={(e) => {
-                        if (item.href === '#home') {
-                          e.preventDefault();
-                          scrollToHero(e);
-                        } else {
-                          handleNavLinkClick();
-                        }
-                      }}
-                    >
-                      {item.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-        </div>
+      {/* Mobile Navigation */}
+      <div 
+        className={`${styles.mobileNavOverlay} ${isMobileMenuOpen ? styles.open : ''}`}
+        id="mobile-menu-navigation"
+      >
+        <nav className={styles.mobileNav}>
+          <ul>
+            {menuItems.map((item) => (
+              <li key={item.name}>
+                <a 
+                  href={item.href} 
+                  onClick={(e) => {
+                    if (item.href === '#home') scrollToHero(e);
+                    else handleNavLinkClick();
+                  }}
+                >
+                  {item.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </header>
   );

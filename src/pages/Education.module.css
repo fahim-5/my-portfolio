@@ -46,7 +46,7 @@
   width: 60px; /* Increased length to match About line */
   height: 4px;
   /* Solid accent color for the underline */
-  background-color: #6a1b9a; 
+  background-color:hsl(179, 100%, 40%); 
   border-radius: 2px;
 }
 
@@ -81,7 +81,7 @@
   width: 4px;
   height: 0;
   /* Solid accent color for the line (removed gradient) */
-  background-color: #6a1b9a; 
+  background-color: #00cec9; 
   transition: height 0.3s ease-in-out;
   z-index: -1;
 }
@@ -89,8 +89,8 @@
 .eduItem:hover {
   transform: translateY(-5px);
   /* Added a distinct shadow with an accent glow */
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 
-              0 0 15px rgba(106, 27, 154, 0.6);
+  box-shadow: 0 15px 30px#036664, 
+              0 0 15px #00cec9;
 }
 
 .eduItem:hover::before {
@@ -108,7 +108,7 @@
   font-size: 17px;
   font-weight: 500;
   /* Accent color for the institution name */
-  color: #6a1b9a; 
+  color: #00cec9;
   margin-bottom: 10px;
 }
 

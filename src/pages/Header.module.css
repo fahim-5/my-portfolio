@@ -26,15 +26,28 @@
   margin: 0 auto;
   padding: 0 40px;
 }
-
-/* Logo */
-.logo h1 {
-  font-size: 28px;
-  font-weight:bolder;
+.logo h1 a {
+  font-size: 32px;
+  font-weight: 900;
   background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   cursor: pointer;
+  display: inline-block;
+  text-transform: lowercase;
+  transition: all 0.3s ease-in-out;
+  animation: gradientShift 1.5s ease infinite; /* faster animation */
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.logo h1 a:hover {
+  transform: scale(1.05);
 }
 
 /* Desktop Nav */
@@ -48,12 +61,11 @@
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   transition: 0.3s;
-  position: relative;
   font-size: 15px;
 }
 
 .desktopNav a:hover {
-  color: var(--primary-color);
+  color: #00cec9;
 }
 
 /* Hamburger */
@@ -64,6 +76,8 @@
   width: 26px;
   height: 20px;
   cursor: pointer;
+  transition: all 0.4s ease;
+  z-index: 2100;
 }
 
 .bar {
@@ -71,55 +85,62 @@
   width: 100%;
   background: white;
   border-radius: 3px;
+  transition: all 0.4s ease;
+}
+
+/* Transform hamburger to cross */
+.hamburgerMenu.open .bar:nth-child(1) {
+  transform: rotate(45deg) translateY(7px);
+}
+
+.hamburgerMenu.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerMenu.open .bar:nth-child(3) {
+  transform: rotate(-45deg) translateY(-7px);
 }
 
 /* Mobile Sidebar */
 .mobileNavOverlay {
   position: fixed;
-  top: 0px;
+  top: 73px; /* starts just below navbar */
   right: -250px;
-  width: 150px;
-  height: 64vh;
-  background:  #0d0d20;
+  width: 148px;
+  background: #0d0d20;
   transition: right 0.35s ease;
   z-index: 2000;
   box-shadow: -6px 0 20px rgba(0, 0, 0, 1);
+  height: auto;
+  max-height: 80vh; /* prevents it from growing too tall */
+  overflow-y: auto; /* scroll if too many links */
+  border-radius: 0 0 0 12px; /* optional aesthetic touch */
 }
+
 
 .mobileNavOverlay.open {
   right: 0;
 }
 
-/* Close Button */
-.closeButton {
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  color: #fff;
-  font-size: 32px;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.closeButton:hover {
-  color: var(--primary-color);
-}
-
 /* Sidebar Content */
-.mobileNavContent {
-  margin-top: 90px;
-  padding-left: 25px;
+.mobileNav {
+  padding: 20px;
 }
 
-/* Sidebar Links */
 .mobileNav ul {
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 .mobileNav li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  color: rgb(0, 255, 255);
+  transition: color 0.3s ease;
+}
+
+.mobileNav li:hover {
+  color: rgb(0, 255, 255);
 }
 
 .mobileNav a {
@@ -128,32 +149,15 @@
   color: #fff;
   font-weight: 500;
   letter-spacing: 0.5px;
-  padding: 10px 0;
+  padding: 8px 0;
   text-decoration: none;
-  position: relative;
   transition: color 0.3s ease;
-}
-
-.mobileNav a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.1);
-  transition: background 0.3s ease;
 }
 
 .mobileNav a:hover {
   color: var(--primary-color);
 }
 
-.mobileNav a:hover::after {
-  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-}
-
-/* Responsive */
 @media (max-width: 992px) {
   .desktopNav {
     display: none;

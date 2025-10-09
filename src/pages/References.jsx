@@ -145,7 +145,7 @@ const References = () => {
           </button>
           
           <h3 className={styles.modalTitle}>Contact {name}</h3>
-          <p className={styles.modalSubtitle}>{position} at {company}</p>
+          <p className={styles.modalSubtitleInContact}>{position} at {company}</p>
 
           {/* Email Contact Item */}
           <div className={styles.contactItem}>
@@ -245,7 +245,6 @@ const References = () => {
                 </div>
 
                 <div className={styles.quote}>
-                  <FaQuoteLeft className={styles.quoteIcon} />
                   <p>"{reference.quote}"</p>
                 </div>
               </div>
