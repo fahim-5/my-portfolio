@@ -1,33 +1,21 @@
 /* About.module.css */
 
-/* Define Key Colors for the Dark Theme 
-   - Background: #0d0b17
-   - Accent: #6a1b9a (Deep Violet/Indigo)
-   - Social Icon Bg (un-hovered): #181622 (Very dark slate)
-   - Text (Title): #ffffff
-   - Text (Paragraph): #c4c4c4
-*/
-
 .about {
-  /* Very dark background matching the image */
-  background-color: #0a0a14; 
+  background-color: #0a0a14;
   min-height: 70vh;
   padding: 80px 0;
   width: 100%;
-  /* Fix: Ensure the section itself is constrained */
-  overflow: hidden; 
-  padding-bottom: 20px;
+  overflow: hidden;
 }
 
 .container {
   display: flex;
   flex-wrap: wrap;
-  gap: 80px; /* Increased gap for visual spacing, matches image */
+  gap: 80px;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  /* Use padding for internal spacing, keeping max-width strict */
-  padding: 0 40px; 
+  padding: 0 40px;
   position: relative;
   align-items: flex-start;
   z-index: 1;
@@ -35,7 +23,7 @@
 
 /* --- Profile Sidebar --- */
 .profileSidebar {
-  flex: 0 0 300px; /* Adjusted width to match image proportions */
+  flex: 0 0 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,19 +34,13 @@
 
 .profileImage {
   width: 100%;
-  max-width: 250px; /* Fixed size to match image */
+  max-width: 250px;
   height: 250px;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
   margin-bottom: 30px;
-  /* Deep violet border to match the ring in the image */
-  border: 3px solid #08191f; 
-  box-shadow: none;
-}
-
-.profileImage::before {
-  display: none; /* Keep the previous removal of the gradient effect */
+  border: 3px solid #08191f;
 }
 
 .profileImage img {
@@ -72,7 +54,7 @@
   transform: scale(1.05);
 }
 
-/* --- Social Links - Key to the Design --- */
+/* --- Social Links --- */
 .socialLinks {
   display: flex;
   justify-content: center;
@@ -81,53 +63,46 @@
 }
 
 .socialIcon {
-  width: 48px; /* Larger icon size to match the image */
+  width: 48px;
   height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Dark background for the icon circle, matching the image */
   background-color: #181622;
   border-radius: 50%;
-  color: #c4c4c4; /* Default icon color (light grey) */
+  color: #c4c4c4;
   position: relative;
   overflow: hidden;
   z-index: 1;
   transition: all 0.3s ease;
-  border: none; /* Removed border to match solid look */
-  box-shadow: none;
+  border: none;
 }
 
-.socialIcon i {
+.socialIcon svg {
   z-index: 2;
-  font-size: 20px; /* Adjusted icon size */
-}
-
-.socialIcon::before {
-  display: none;
+  font-size: 20px;
+  fill: currentColor;
 }
 
 .socialIcon:hover {
   transform: translateY(-2px);
-  /* Hover state: solid deep violet color */
   background-color: #00cec9;
-  color: #fff; /* White icon on hover */
-  /* Added subtle glow/shadow on hover */
-  box-shadow: 0 5px 15px rgba(106, 27, 154, 0.4); 
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(106, 27, 154, 0.4);
 }
 
-/* --- About Content Styling --- */
+/* --- About Content --- */
 .aboutContent {
   flex: 1;
-  padding-top: 5px; /* Fine-tuned vertical alignment */
+  padding-top: 5px;
 }
 
 .sectionTitle {
-  font-size: 38px; /* Larger heading size */
+  font-size: 38px;
   font-weight: 700;
   position: relative;
   margin-bottom: 40px;
-  color: #ffffff; /* Pure white text */
+  color: #ffffff;
   display: inline-block;
 }
 
@@ -138,13 +113,12 @@
   bottom: -10px;
   width: 60px;
   height: 4px;
-  /* Solid accent color for the underline, matching image */
-  background-color:#00cec9;
+  background-color: #00cec9;
   border-radius: 2px;
 }
 
 .aboutContent p {
-  color: #c4c4c4; /* Light grey text */
+  color: #c4c4c4;
   line-height: 1.7;
   margin-bottom: 25px;
   font-size: 17px;
@@ -156,6 +130,7 @@
     flex-direction: column;
     align-items: center;
     padding: 0 20px;
+    gap: 40px;
   }
   
   .profileSidebar {
@@ -163,11 +138,10 @@
     flex: 0 0 auto;
     width: 100%;
     max-width: 350px;
-    text-align: center;
   }
   
   .aboutContent {
-    text-align: left;
+    text-align: center;
     padding-top: 0;
   }
   
@@ -184,11 +158,14 @@
 
 @media (max-width: 768px) {
   .about {
-    padding: 60px 0;
+    padding: 80px 0;
   }
+  
+
   
   .container {
     gap: 30px;
+    padding: 0 20px;
   }
   
   .profileImage {
@@ -201,38 +178,53 @@
     height: 40px;
   }
   
-  .socialIcon i {
+  .socialIcon svg {
     font-size: 16px;
-  }
-
-  .about {
-  /* Very dark background matching the image */
-  
-  padding: 92px 0;
-  
-}
-}
-
-
-/* Mobile-specific text alignment */
-@media (max-width: 768px) {
-  .aboutContent {
-    text-align: left;
-    padding-top: 0;
-  }
-  
-  .bioText {
-    text-align: left;
-    font-size: 1rem;
-    line-height: 1.7;
-    letter-spacing: 0.2px;
   }
   
   .sectionTitle {
-    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
   }
   
-  .skillsHighlights {
-    justify-content: flex-start;
+  .aboutContent p {
+    font-size: 16px;
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .about {
+    padding: 80px 0;
+  }
+  
+  .container {
+    padding: 0 15px;
+    gap: 25px;
+  }
+  
+  .profileImage {
+    max-width: 180px;
+    height: 180px;
+    margin-bottom: 20px;
+  }
+  
+  .socialIcon {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .socialIcon svg {
+    font-size: 14px;
+  }
+  
+  .sectionTitle {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+  
+  .aboutContent p {
+    font-size: 15px;
+    line-height: 1.6;
   }
 }

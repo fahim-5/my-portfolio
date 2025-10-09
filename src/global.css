@@ -1,0 +1,8 @@
+:root {
+  --header-height: 73px;
+}
+
+body {
+  padding-top: var(--header-height);
+  background-color: #0a0a16; /* optional, for consistent dark theme */
+}

@@ -1,9 +1,10 @@
 .portfolio {
-  padding: 80px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   position: relative;
   width: 100%;
   background-color: #0a0a14;
+  padding-bottom: 20px;
+  padding-top: 57px;
 }
 
 .container {
@@ -17,6 +18,7 @@
 }
 
 .sectionTitle {
+  padding-top: 80px;
   font-size: 30px;
   position: relative;
   margin-bottom: 30px;
@@ -42,6 +44,7 @@
   gap: 30px;
 }
 
+/* --- Project Card Styling with Animation & Glow --- */
 .projectCard {
   position: relative;
   overflow: hidden;
@@ -53,20 +56,28 @@
   background-color: var(--glass-bg);
   backdrop-filter: blur(5px);
   border: 1px solid var(--border-color);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
   opacity: 0;
-  transform: translateY(15px);
-  will-change: opacity, transform;
+  transform: translateY(25px);
+  will-change: opacity, transform, box-shadow;
 }
 
-.projectCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-}
-
+/* Fade-in / Slide-up Animation */
 .projectCard.revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Hover Glow & Lift */
+.projectCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 206, 201, 0.2), 0 0 10px #00cec9;
+}
+
+/* Optional: stronger glow for glass effect (like previous glassCard) */
+.projectCard.glassHover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 206, 201, 0.25), 0 0 15px #00cec9;
 }
 
 .projectImage {
@@ -347,7 +358,11 @@
 }
 
 .viewProject {
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--accent-color)
+  );
   color: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
@@ -420,7 +435,7 @@
 }
 
 .navArrow:hover:not(.disabled) {
-  background:  #00cec9;
+  background: #00cec9;
   border-color: var(--primary-color);
   transform: scale(1.1);
 }
@@ -489,10 +504,15 @@
   .container {
     max-width: 1320px;
   }
-  
+
   .portfolioGrid {
     grid-template-columns: repeat(3, 1fr);
     gap: 35px;
+  }
+
+  .sectionTitle {
+      margin-bottom: 20px;
+    padding-top: 35px;
   }
 }
 
@@ -501,6 +521,10 @@
   .portfolioGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: 25px;
+  }
+  .sectionTitle {
+    margin-bottom: 20px;
+    padding-top: 30px;
   }
 }
 
@@ -512,6 +536,10 @@
 
   .projectContent {
     padding: 20px;
+  }
+  .sectionTitle {
+       margin-bottom: 20px;
+    padding-top: 30px;
   }
 
   .viewProject,
@@ -538,7 +566,9 @@
     margin-right: 0;
     display: block;
     font-size: 26px;
-    margin-bottom: 25px;
+   
+     margin-bottom: 20px;
+    padding-top: 30px;
   }
 
   .sectionTitle::after {
@@ -627,6 +657,9 @@
   }
 
   .sectionTitle {
+      margin-bottom: 20px;
+    padding-top: 30px;
+
     font-size: 24px;
     margin-bottom: 20px;
   }
@@ -678,7 +711,6 @@
     padding: 13px 30px;
     font-size: 15px;
     min-width: 90%;
-
   }
 }
 
@@ -686,6 +718,10 @@
 @media (max-width: 400px) {
   .projectContent {
     padding: 12px;
+  }
+  .sectionTitle {
+    padding-top: 30px;
+       margin-bottom: 20px;
   }
 
   .viewProject,

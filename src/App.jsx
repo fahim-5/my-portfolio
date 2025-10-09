@@ -9,6 +9,12 @@ import References from "./pages/References";
 import Pictures from "./pages/Pictures";
 import Footer from "./pages/Footer";
 
+
+// import './global.css';
+// import './App.css'
+
+
+
 function App() {
   return (
     <>

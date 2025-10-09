@@ -2,6 +2,17 @@
    This file handles the main layout of the application wrapper.
 */
 
+:root {
+  --header-height: 73px;
+}
+
+body {
+  padding-top: var(--header-height);
+  background-color: #0a0a16; /* optional, for consistent dark theme */
+}
+
+
+
 .App {
   /* This ensures the main app wrapper uses the full width established in index.css */
   width: 100%; 

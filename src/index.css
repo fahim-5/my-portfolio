@@ -34,6 +34,18 @@
   padding: 0;
 }
 
+
+
+:root {
+  --header-height: 73px;
+}
+
+body {
+  padding-top: var(--header-height);
+  background-color: #0a0a16; /* optional, for consistent dark theme */
+}
+
+
 /* 2. Body/HTML Overflow Fix */
 /* This explicitly hides any content that attempts to push outside the horizontal boundaries of the screen. */
 html, body {
