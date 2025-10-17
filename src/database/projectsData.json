@@ -1,4 +1,37 @@
 [
+
+   {
+    "title": "Customer Support System",
+    "category": "Web App",
+    "description": "A React-based customer support ticket management system with comprehensive administrative features. Includes ticket creation, status tracking, priority management, and resolution workflows. Demonstrates advanced state management, conditional rendering, and dynamic UI updates essential for enterprise-level application development.",
+    "technologies": "HTML, CSS, React, State Management",
+    "demoUrl": "https://customer-support-zone-by-fahim.netlify.app/",
+    "repoUrl": "https://github.com/fahim-5/Assignment_7.git",
+    "image": "/assets/projects/customer-support.jpg",
+    "featured": true
+  },
+ 
+  {
+    "title": "Green Earth: Dynamic Tree Planting App",
+    "category": "Web App",
+    "description": "An environmentally-focused web application that promotes tree plantation through an engaging user interface. Integrates with external APIs for comprehensive plant data, features dynamic cart management with real-time calculations, and provides detailed plant information. Built with mobile-first responsive design and optimized performance for seamless user interaction.",
+    "technologies": "HTML, CSS, JavaScript, API Integration",
+    "demoUrl": "https://green-earth-by-fahim-faysal.netlify.app/",
+    "repoUrl": "https://github.com/fahim-5/Assignment_6.git",
+    "image": "/assets/projects/green-earth.jpg",
+    "featured": true
+  },
+ 
+   {
+    "title": "Emergency Service",
+    "category": "Web App",
+    "description": "A dynamic web application demonstrating advanced DOM manipulation and asynchronous JavaScript capabilities. Features real-time data fetching, interactive UI components, and efficient state management without external frameworks. Serves as a technical showcase of pure JavaScript proficiency for modern web development roles.",
+    "technologies": "HTML, CSS, JavaScript, DOM Manipulation",
+    "demoUrl": "https://fahim-5.github.io/Assignment_5/",
+    "repoUrl": "https://github.com/fahim-5/Assignment_5.git",
+    "image": "/assets/projects/emergency-service.jpg",
+    "featured": false
+  },
   {
     "title": "Live Crime Reporting System",
     "category": "Web App",
@@ -27,36 +60,6 @@
     "demoUrl": "https://fahim-5.github.io/Fahim-Faysal/",
     "repoUrl": "https://github.com/fahim-5/Fahim-Faysal.git",
     "image": "/assets/projects/portfolio.jpg",
-    "featured": true
-  },
-  {
-    "title": "Emergency Service",
-    "category": "Web App",
-    "description": "A dynamic web application demonstrating advanced DOM manipulation and asynchronous JavaScript capabilities. Features real-time data fetching, interactive UI components, and efficient state management without external frameworks. Serves as a technical showcase of pure JavaScript proficiency for modern web development roles.",
-    "technologies": "HTML, CSS, JavaScript, DOM Manipulation",
-    "demoUrl": "https://fahim-5.github.io/Assignment_5/",
-    "repoUrl": "https://github.com/fahim-5/Assignment_5.git",
-    "image": "/assets/projects/emergency-service.jpg",
-    "featured": false
-  },
-  {
-    "title": "Green Earth: Dynamic Tree Planting App",
-    "category": "Web App",
-    "description": "An environmentally-focused web application that promotes tree plantation through an engaging user interface. Integrates with external APIs for comprehensive plant data, features dynamic cart management with real-time calculations, and provides detailed plant information. Built with mobile-first responsive design and optimized performance for seamless user interaction.",
-    "technologies": "HTML, CSS, JavaScript, API Integration",
-    "demoUrl": "https://green-earth-by-fahim-faysal.netlify.app/",
-    "repoUrl": "https://github.com/fahim-5/Assignment_6.git",
-    "image": "/assets/projects/green-earth.jpg",
-    "featured": true
-  },
-  {
-    "title": "Customer Support System",
-    "category": "Web App",
-    "description": "A React-based customer support ticket management system with comprehensive administrative features. Includes ticket creation, status tracking, priority management, and resolution workflows. Demonstrates advanced state management, conditional rendering, and dynamic UI updates essential for enterprise-level application development.",
-    "technologies": "HTML, CSS, React, State Management",
-    "demoUrl": "https://customer-support-zone-by-fahim.netlify.app/",
-    "repoUrl": "https://github.com/fahim-5/Assignment_7.git",
-    "image": "/assets/projects/customer-support.jpg",
     "featured": true
   }
 ]
